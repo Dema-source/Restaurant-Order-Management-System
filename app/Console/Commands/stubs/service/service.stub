@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Services;
+
+use App\Repositories\Contracts\{{Name}}RepositoryInterface;
+
+class {{Name}}Service extends BaseService
+{
+    public function __construct({{Name}}RepositoryInterface $repository)
+    {
+        parent::__construct($repository);
+    }
+}

@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Http\Controllers\Api{{NamespacePrefix}};
+
+use App\Http\Controllers\Api\BaseApiController;
+use App\Http\Requests\{{RequestNamespace}}\Store{{Name}}Request;
+use App\Http\Requests\{{RequestNamespace}}\Update{{Name}}Request;
+use App\Http\Resources\{{Name}}Resource;
+use App\Services\{{Name}}Service;
+use Illuminate\Http\JsonResponse;
+
+class {{Name}}Controller extends BaseApiController
+{
+    public function __construct(
+        protected {{Name}}Service ${{camel}}Service
+    ) {}
+
+    public function index(): JsonResponse
+    {
+        $data = $this->{{camel}}Service->getPaginated(
+            perPage: request()->integer('per_page', 15)
+        );
+
+        return $this->paginatedResponse($data);
+    }
+
+    public function store(Store{{Name}}Request $request): JsonResponse
+    {
+        ${{camel}} = $this->{{camel}}Service->create($request->validated());
+
+        return $this->createdResponse(
+            new {{Name}}Resource(${{camel}})
+        );
+    }
+
+    public function show(int $id): JsonResponse
+    {
+        ${{camel}} = $this->{{camel}}Service->findById($id);
+
+        if (!${{camel}}) {
+            return $this->notFoundResponse();
+        }
+
+        return $this->successResponse(
+            new {{Name}}Resource(${{camel}})
+        );
+    }
+
+    public function update(Update{{Name}}Request $request, int $id): JsonResponse
+    {
+        if (!$this->{{camel}}Service->exists($id)) {
+            return $this->notFoundResponse();
+        }
+
+        $this->{{camel}}Service->update($id, $request->validated());
+        ${{camel}} = $this->{{camel}}Service->findById($id);
+
+        return $this->successResponse(
+            new {{Name}}Resource(${{camel}}),
+            'Resource updated successfully'
+        );
+    }
+
+    public function destroy(int $id): JsonResponse
+    {
+        if (!$this->{{camel}}Service->exists($id)) {
+            return $this->notFoundResponse();
+        }
+
+        $this->{{camel}}Service->delete($id);
+
+        return $this->noContentResponse();
+    }
+}
