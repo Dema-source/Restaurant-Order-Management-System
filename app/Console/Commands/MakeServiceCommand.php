@@ -22,7 +22,7 @@ use Illuminate\Filesystem\Filesystem;
  *
  * Usage:
  *   php artisan make:service Category
- *   php artisan make:service Admin/Category --folder=Admin
+ *   php artisan make:service Category --folder=Admin
  *   php artisan make:service Category --migration
  *
  */
@@ -157,10 +157,6 @@ class MakeServiceCommand extends Command
         $this->generateFile('resource', app_path("Http/Resources/{$name}Resource.php"), "Resource [{$name}Resource]");
         $this->generateFile('controller', app_path("Http/Controllers/{$controllerPath}/{$name}Controller.php"), "Controller [{$name}Controller]");
 
-        // Generate and register route files
-        $this->generateRouteFile($snakePlural);
-        $this->registerRoutes($snakePlural);
-
         // Register repository binding in the service provider
         $this->registerRepository($name);
 
@@ -189,7 +185,7 @@ class MakeServiceCommand extends Command
                 ['Store Request', "app/Http/Requests/{$requestPath}/Store{$name}Request.php"],
                 ['Update Request', "app/Http/Requests/{$requestPath}/Update{$name}Request.php"],
                 ['Resource', "app/Http/Resources/{$name}Resource.php"],
-                ['Routes', "routes/api/{$snakePlural}.php"],
+                // ['Routes', "routes/api/{$snakePlural}.php"],
             ]
         );
 
@@ -265,62 +261,6 @@ class MakeServiceCommand extends Command
         // Write the processed stub content to the target file
         $this->files->put($targetPath, $this->getStubContent($stubName));
         $this->components->info("  {$label} created.");
-    }
-
-    /**
-     * Generate a dedicated route file for the microservice.
-     *
-     * This method creates a separate route file in the routes/api directory
-     * to keep the API routes organized. Each microservice gets its own route file.
-     *
-     * @param string $snakePlural The snake_case plural name of the resource (e.g., 'categories')
-     * @return void
-     */
-    protected function generateRouteFile(string $snakePlural): void
-    {
-        $routeDir = base_path('routes/api');
-        $routePath = "{$routeDir}/{$snakePlural}.php";
-
-        // Ensure the routes/api directory exists
-        $this->files->ensureDirectoryExists($routeDir);
-
-        // Skip if the route file already exists
-        if ($this->files->exists($routePath)) {
-            $this->warn("  Route file already exists: routes/api/{$snakePlural}.php");
-            return;
-        }
-
-        // Create the route file from the stub template
-        $this->files->put($routePath, $this->getStubContent('routes'));
-        $this->components->info("  Routes [routes/api/{$snakePlural}.php] created.");
-    }
-
-    /**
-     * Register the new route file in the main api.php file.
-     *
-     * This method adds a require statement to the main routes/api.php file
-     * to include the newly created route file. This ensures the routes are
-     * actually loaded by Laravel.
-     *
-     * @param string $snakePlural The snake_case plural name of the resource (e.g., 'categories')
-     * @return void
-     */
-    protected function registerRoutes(string $snakePlural): void
-    {
-        $apiRoutePath = base_path('routes/api.php');
-        $requireLine = "require __DIR__.'/api/{$snakePlural}.php';";
-
-        $content = $this->files->get($apiRoutePath);
-
-        // Skip if the route is already registered
-        if (Str::contains($content, $requireLine)) {
-            $this->warn("  Route already registered in api.php");
-            return;
-        }
-
-        // Append the require statement to the main api.php file
-        $this->files->append($apiRoutePath, "\n{$requireLine}\n");
-        $this->components->info("  Route registered in [routes/api.php].");
     }
 
     /**

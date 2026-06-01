@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
-            $table->decimal('price');
+            $table->decimal('price', 10, 2);
             $table->string('image')->nullable();
-            $table->boolean('is_available');
+            $table->boolean('is_available')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

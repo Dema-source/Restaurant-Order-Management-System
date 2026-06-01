@@ -17,6 +17,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | User Email Domain
+    |--------------------------------------------------------------------------
+    |
+    | This value is the domain used for auto-generated user emails.
+    | When creating users, emails are automatically generated as name@domain
+    |
+    */
+    'user_email_domain' => env('USER_EMAIL_DOMAIN', 'restaurant.com'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
