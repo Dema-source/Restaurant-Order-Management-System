@@ -15,16 +15,6 @@ class CategoryController extends BaseApiController
         protected CategoryService $categoryService
     ) {}
 
-    // public function index(): JsonResponse
-    // {
-    //     $data = $this->categoryService->getPaginatedWithFilters(
-    //         filters: request()->all(),
-    //         perPage: request()->integer('per_page', 15)
-    //     );
-
-    //     return $this->paginatedResponse($data);
-    // }
-
     public function store(StoreCategoryRequest $request): JsonResponse
     {
         $category = $this->categoryService->create($request->validated());
@@ -33,19 +23,6 @@ class CategoryController extends BaseApiController
             new CategoryResource($category)
         );
     }
-
-    // public function show(int $id): JsonResponse
-    // {
-    //     $category = $this->categoryService->findById($id);
-
-    //     if (!$category) {
-    //         return $this->notFoundResponse();
-    //     }
-
-    //     return $this->successResponse(
-    //         new CategoryResource($category)
-    //     );
-    // }
 
     public function update(UpdateCategoryRequest $request, int $id): JsonResponse
     {
@@ -79,15 +56,11 @@ class CategoryController extends BaseApiController
             return $this->notFoundResponse();
         }
 
-        try {
-            $this->categoryService->toggleActive($id);
+        $this->categoryService->toggleActive($id);
 
-            return $this->successResponse(
-                null,
-                'Category status toggled successfully'
-            );
-        } catch (\Exception $e) {
-            return $this->errorResponse($e->getMessage(), 400);
-        }
+        return $this->successResponse(
+            null,
+            'Category status toggled successfully'
+        );
     }
 }

@@ -36,7 +36,7 @@ class Category extends Model
      *
      * This method adds a global scope to automatically filter inactive
      * categories for non-admin users. This ensures that regular users
-     * and customers only see active categories while administrators
+     * only see active categories while administrators
      * can see all categories including inactive ones.
      *
      * @return void

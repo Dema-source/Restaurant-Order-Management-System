@@ -1,7 +1,8 @@
   <?php
 
   use App\Http\Controllers\Api\Admin\CategoryController;
-  use App\Http\Controllers\Api\Admin\UserController;
+use App\Http\Controllers\Api\Admin\MenuItemController;
+use App\Http\Controllers\Api\Admin\UserController;
   use App\Http\Controllers\Api\RolesPermissions\RoleController;
   use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,12 @@
   // API: {{baseURL}}/api/admin/categories
   Route::patch('categories/{id}/toggle-active', [CategoryController::class, 'toggleActive']);
   Route::apiResource('categories',CategoryController::class)->only(['store', 'update','destroy']);
+
+  /*
+  |--------------------------------------------------------------------------
+  | MenuItem - Full Access
+  |--------------------------------------------------------------------------
+  */
+  // API: {{baseURL}}/api/admin/menu-items
+  Route::patch('menu-items/{id}/toggle-available', [MenuItemController::class, 'toggleAvailable']);
+  Route::apiResource('menu-items',MenuItemController::class)->only(['store', 'update','destroy']);
