@@ -23,5 +23,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('cashier')->middleware(['role:cashier'])->group(function () {
         require __DIR__ . '/api/cashier.php';
     });
-});
 
+    // Public: For Authenticated users
+    Route::prefix('public')->group(function () {
+        require __DIR__ . '/api/public.php';
+    });
+});
