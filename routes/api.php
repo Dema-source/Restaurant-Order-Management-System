@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // Cashier - Limited access
-    Route::prefix('cashier')->middleware(['role:cashier'])->group(function () {
+    Route::prefix('cashier')->middleware(['role:Cashier'])->group(function () {
         require __DIR__ . '/api/cashier.php';
     });
 

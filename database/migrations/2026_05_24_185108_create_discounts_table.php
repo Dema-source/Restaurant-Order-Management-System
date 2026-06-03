@@ -19,12 +19,10 @@ return new class extends Migration
             $table->decimal('value');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
-
-            $table->index('type');
         });
     }
 

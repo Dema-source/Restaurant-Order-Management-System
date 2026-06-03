@@ -31,7 +31,7 @@
                 },
                 {
                   "key": "password",
-                  "value": "12345678",
+                  "value": "password",
                   "type": "text",
                   "uuid": "3504fd7b-e8b5-474f-9d87-1a4deed916d5"
                 }
@@ -1181,6 +1181,406 @@
               "response": []
             }
           ]
+        },
+        {
+          "name": "Discount",
+          "item": [
+            {
+              "name": "index",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts?search=w",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "discounts"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "w",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "USCnTNWPKMXZnC04DmTE9I1XViVTgJlk7LXjoXMy60367045",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "test discount",
+                      "type": "text",
+                      "uuid": "2c9e70a1-0530-4c8a-b3a9-e0d619b1eba6"
+                    },
+                    {
+                      "key": "code",
+                      "value": "testDescription2",
+                      "type": "text",
+                      "uuid": "4f6c4c96-c967-4612-bf01-880d1ba7a80c"
+                    },
+                    {
+                      "key": "type",
+                      "value": "fixed",
+                      "type": "text",
+                      "uuid": "94cee008-3ab4-4759-9ec5-f704a3c5e69e"
+                    },
+                    {
+                      "key": "value",
+                      "value": "20",
+                      "type": "text",
+                      "uuid": "647ce30b-4e85-44a7-8d4e-ff3912e9ea54"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "2026-6-3",
+                      "type": "text",
+                      "uuid": "596c9087-a7d2-44bc-9333-ac94b423321c"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "2026-6-10",
+                      "type": "text",
+                      "uuid": "856d3f75-1e64-40e9-ab89-98cb47edd1cf"
+                    },
+                    {
+                      "key": "description",
+                      "type": "text",
+                      "uuid": "bda77673-7bfa-4042-ae91-ce1e3b9991dc",
+                      "value": "test discount description"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "discounts"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts/14",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "discounts",
+                    "14"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"type\": \"percentage\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts/14",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "discounts",
+                    "14"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts/13",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "discounts",
+                    "13"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "toggle active",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts/12/toggle-active",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "discounts",
+                    "12",
+                    "toggle-active"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "duplicate",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "TestOne",
+                      "type": "text",
+                      "uuid": "a997edec-e007-4b63-b5b2-ac6f633c1952"
+                    },
+                    {
+                      "key": "code",
+                      "value": "TestOne",
+                      "type": "text",
+                      "uuid": "65771126-5d1c-4dfd-9c2c-a9bd787d49ae"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts/14/duplicate",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "discounts",
+                    "14",
+                    "duplicate"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
@@ -1809,6 +2209,111 @@
                     "public",
                     "menu-items",
                     "4"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Discount",
+          "item": [
+            {
+              "name": "index",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "MbtlddRT6E3C9FqT8AjJKGaqkJd1vuM9p1ltqFbE0b3c9cbf",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/discounts",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "discounts"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "4ujpBNNHHtkylgdPLF5wcS53ftLkWLK2xvUJrFxK123bbdeb",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/discounts/14",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "discounts",
+                    "14"
                   ]
                 }
               },

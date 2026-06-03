@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\BaseApiController;
+use App\Http\Requests\MenuItem\IndexMenuItemRequest;
 use App\Http\Resources\MenuItemResource;
 use App\Services\MenuItemService;
 use Illuminate\Http\JsonResponse;
@@ -13,11 +14,11 @@ class MenuItemController extends BaseApiController
         protected MenuItemService $menuItemService
     ) {}
 
-    public function index(): JsonResponse
+    public function index(IndexMenuItemRequest $request): JsonResponse
     {
         $data = $this->menuItemService->getPaginatedWithFilters(
-            filters: request()->all(),
-            perPage: request()->integer('per_page', 15)
+            filters: $request->validated(),
+            perPage: $request->integer('per_page', 15)
         );
 
         return $this->paginatedResponse($data);

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             MenuItemSeeder::class,
+            DiscountSeeder::class,
         ]);
 
         $this->command->info('Database seeded successfully!');

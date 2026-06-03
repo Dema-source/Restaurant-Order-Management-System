@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Category\IndexCategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Services\CategoryService;
 use Illuminate\Http\JsonResponse;
@@ -12,11 +13,11 @@ class CategoryController extends BaseApiController
         protected CategoryService $categoryService
     ) {}
 
-    public function index(): JsonResponse
+    public function index(IndexCategoryRequest $request): JsonResponse
     {
         $data = $this->categoryService->getPaginatedWithFilters(
-            filters: request()->all(),
-            perPage: request()->integer('per_page', 15)
+            filters: $request->validated(),
+            perPage: $request->integer('per_page', 15)
         );
 
         return $this->paginatedResponse($data);
