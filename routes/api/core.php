@@ -24,10 +24,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('change-password/{id}', [UserController::class, 'changePassword'])->middleware('role:super_administrator');
     });
 
-    // Roles & Permissions
+    // Roles 
     Route::prefix('roles')->name('roles.')->group(function () {
         // Implement RoleController endpoints
         // Route::apiResource('/', RoleController::class);
-        // Route::put('{role}/permissions', [RoleController::class, 'updatePermissions']);
     });
 });

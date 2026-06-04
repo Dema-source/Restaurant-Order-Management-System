@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
@@ -64,6 +65,16 @@ class MenuItem extends Model
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * Get all of the movements for the MenuItem
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function movements(): HasMany
+    {
+        return $this->hasMany(InventoryMovement::class);
+    }
+    
      // Scopes
     /**
      * Scope to filter only available menuItems.
@@ -86,7 +97,7 @@ class MenuItem extends Model
     public function scopeSearch($query, string $search)
     {
         return $query->where('name->en', 'like', "%{$search}%")
-                    ->orWhere('name->ar', 'like', "%{$search}%");
+            ->orWhere('name->ar', 'like', "%{$search}%");
     }
 
     /**

@@ -14,15 +14,13 @@ return new class extends Migration
         Schema::create('inventory_movements', function (Blueprint $table) {
             $table->id();
             $table->foreignId('menu_item_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('order_id')->nullable()->constrained()->cascadeOnDelete();
             $table->enum('type', ["in", "out"]);
             $table->bigInteger('quantity');
             $table->enum('reason', ["order", "restock", "waste", "adjustment"]);
             $table->foreignId('created_by')->constrained('users')->cascadeOnDelete();
             $table->text('notes')->nullable();
             $table->timestamp('created_at');
-
-            $table->index(['type', 'reason']);
         });
     }
 
