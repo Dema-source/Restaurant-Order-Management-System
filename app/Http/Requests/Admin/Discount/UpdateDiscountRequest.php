@@ -35,14 +35,14 @@ class UpdateDiscountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'sometimes|string|max:255',
-            'code' => 'sometimes|string|max:50|unique:discounts,code,' . $this->route('id'),
-            'type' => 'sometimes|in:percentage,fixed',
-            'value' => 'sometimes|numeric|min:0',
-            'start_date' => 'sometimes|date|after_or_equal:today',
-            'end_date' => 'sometimes|date|after:start_date',
+            'name' => 'sometimes|string|max:255|unique:discounts,name,' . $this->route('id'),
+            'discount_type' => 'sometimes|in:percentage,fixed',
+            'discount_value' => 'sometimes|numeric|min:0',
+            'minimum_order_amount' => 'sometimes|numeric|min:0',
+            'weekday' => 'sometimes|in:Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday',
             'is_active' => 'boolean',
-            'description' => 'sometimes|string|max:1000',
+            'start_date' => 'sometimes|date',
+            'end_date' => 'sometimes|date|after_or_equal:start_date',
         ];
     }
 
@@ -57,8 +57,8 @@ class UpdateDiscountRequest extends FormRequest
      */
     public function withValidator($validator)
     {
-        $validator->sometimes('value', 'max:100', function ($input) {
-            return $input->type === 'percentage';
+        $validator->sometimes('discount_value', 'max:100', function ($input) {
+            return $input->discount_type === 'percentage';
         });
     }
 }

@@ -119,4 +119,17 @@ interface InventoryMovementRepositoryInterface extends RepositoryInterface
      * @return bool True if successful, false otherwise
      */
     public function confirmReservedStock(int $orderId): bool;
+
+    /**
+     * Deduct stock for an order item.
+     *
+     * This method creates an inventory movement for stock deduction
+     * when an order is created.
+     *
+     * @param int $menuItemId The menu item ID
+     * @param int $orderId The order ID
+     * @param int $quantity The quantity to deduct
+     * @return Model The created inventory movement
+     */
+    public function deductForOrder(int $menuItemId, int $orderId, int $quantity): Model;
 }

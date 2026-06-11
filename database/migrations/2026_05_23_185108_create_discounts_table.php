@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code')->unique()->nullable();
-            $table->enum('type', ["percentage", "fixed"]);
-            $table->decimal('value');
+            $table->string('name')->unique();
+            $table->enum('discount_type', ["percentage", "fixed"]);
+            $table->decimal('discount_value', 10, 2);
+            $table->decimal('minimum_order_amount', 10, 2)->nullable();
+            $table->string('weekday')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->boolean('is_active')->default(true);
-            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

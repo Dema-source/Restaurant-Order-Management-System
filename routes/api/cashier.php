@@ -1,7 +1,9 @@
   <?php
 
+  use App\Http\Controllers\Api\CustomerController;
   use App\Http\Controllers\Api\DiscountController;
   use App\Http\Controllers\Api\InventoryMovementController;
+  use App\Http\Controllers\Api\OrderController;
   use Illuminate\Support\Facades\Route;
 
   /*
@@ -37,3 +39,29 @@
     // Dynamic route must come last
     Route::get('/{id}', [InventoryMovementController::class, 'show']);
   });
+
+  /*
+  |--------------------------------------------------------------------------
+  | Orders
+  |--------------------------------------------------------------------------
+  */
+  // API: {{baseURL}}/api/cashier/orders
+  Route::apiResource('orders', OrderController::class)->except(['destroy']);
+
+  // Additional order routes
+  Route::prefix('orders')->group(function () {
+    Route::get('/customer/{customerId}', [OrderController::class, 'getByCustomer']);
+    Route::get('/status/{status}', [OrderController::class, 'getByStatus']);
+    Route::patch('/{id}/status', [OrderController::class, 'updateStatus']);
+  });
+
+  /*
+  |--------------------------------------------------------------------------
+  | Customers
+  |--------------------------------------------------------------------------
+  */
+  // API: {{baseURL}}/api/cashier/customers
+  Route::apiResource('customers', CustomerController::class)->only(['index', 'show', 'store', 'update']);
+
+  // Find customer by phone
+  Route::get('/customers/phone/{phone}', [CustomerController::class, 'findByPhone']);

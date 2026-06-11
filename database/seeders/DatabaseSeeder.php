@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             MenuItemSeeder::class,
             DiscountSeeder::class,
-            InventoryMovementSeeder::class,
+            // InventoryMovementSeeder::class,
+            CustomerSeeder::class,
+            OrderSeeder::class,
         ]);
 
         $this->command->info('Database seeded successfully!');

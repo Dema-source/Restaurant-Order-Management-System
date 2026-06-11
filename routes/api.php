@@ -14,8 +14,8 @@ Route::middleware('auth:sanctum')->group(function () {
         require __DIR__ . '/api/super_administrator.php';
     });
 
-    // kitchen Stuff - Limited access
-    Route::prefix('kitchen')->middleware(['role:kitchen_staff'])->group(function () {
+    // kitchen Staff - Limited access
+    Route::prefix('kitchen')->middleware(['role:Kitchen_staff'])->group(function () {
         require __DIR__ . '/api/kitchen_staff.php';
     });
 

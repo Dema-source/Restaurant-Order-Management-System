@@ -44,6 +44,23 @@ class InventoryMovement extends Model
             if (auth()->check()) {
                 $model->created_by = auth()->id();
             }
+
+            // If created_at is not provided, use current timestamp
+            if (empty($model->created_at)) {
+                $model->created_at = now();
+            }
+        });
+
+        static::created(function ($model) {
+            // Update stock_quantity in menu_items when inventory movement is created
+            $menuItem = $model->menuItem;
+            if ($menuItem) {
+                if ($model->type === 'in') {
+                    $menuItem->increment('stock_quantity', $model->quantity);
+                } elseif ($model->type === 'out') {
+                    $menuItem->decrement('stock_quantity', $model->quantity);
+                }
+            }
         });
     }
 

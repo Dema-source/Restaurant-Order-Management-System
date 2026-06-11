@@ -135,23 +135,17 @@ class InventoryMovementRepository extends BaseRepository implements InventoryMov
     /**
      * Get current stock level for a menu item.
      *
-     * This method calculates the current stock level by summing
-     * all 'in' movements and subtracting all 'out' movements.
+     * This method returns the cached stock_quantity from menu_items table
+     * for faster lookups. The stock_quantity is automatically updated
+     * when inventory movements are created.
      *
      * @param int $menuItemId The menu item ID
      * @return int The current stock level
      */
     public function getStockLevel(int $menuItemId): int
     {
-        $in = $this->model->where('menu_item_id', $menuItemId)
-            ->where('type', 'in')
-            ->sum('quantity');
-
-        $out = $this->model->where('menu_item_id', $menuItemId)
-            ->where('type', 'out')
-            ->sum('quantity');
-
-        return $in - $out;
+        $menuItem = \App\Models\MenuItem::find($menuItemId);
+        return $menuItem ? $menuItem->stock_quantity : 0;
     }
 
     /**
@@ -336,5 +330,28 @@ class InventoryMovementRepository extends BaseRepository implements InventoryMov
 
             return true;
         });
+    }
+
+    /**
+     * Deduct stock for an order item.
+     *
+     * This method creates an inventory movement for stock deduction
+     * when an order is created.
+     *
+     * @param int $menuItemId The menu item ID
+     * @param int $orderId The order ID
+     * @param int $quantity The quantity to deduct
+     * @return Model The created inventory movement
+     */
+    public function deductForOrder(int $menuItemId, int $orderId, int $quantity): Model
+    {
+        return $this->model->create([
+            'menu_item_id' => $menuItemId,
+            'order_id' => $orderId,
+            'type' => 'out',
+            'quantity' => $quantity,
+            'reason' => 'order',
+            'notes' => 'Stock deducted for order',
+        ]);
     }
 }

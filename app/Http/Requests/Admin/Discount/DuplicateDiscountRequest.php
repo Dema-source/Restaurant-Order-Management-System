@@ -5,21 +5,19 @@ namespace App\Http\Requests\Admin\Discount;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Form request for duplicating an existing discount.
+ * Form request for duplicating a discount.
  *
  * This request handles the validation for duplicating a discount,
- * allowing the user to override specific fields like name and code
- * while copying all other values from the original discount.
+ * allowing the user to override specific fields like name.
  *
- * Validation rules ensure data integrity and proper formatting before
- * the discount is duplicated.
+ * Validation rules ensure data integrity before the discount is duplicated.
  */
 class DuplicateDiscountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
-     * All authenticated users are authorized to duplicate discounts.
+     * Only admin users are authorized to duplicate discounts.
      *
      * @return bool True if authorized, false otherwise
      */
@@ -36,8 +34,30 @@ class DuplicateDiscountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'code' => 'required|string|max:50|unique:discounts,code',
+            'name' => 'required|string|max:255|unique:discounts,name',
+            'discount_type' => 'sometimes|in:percentage,fixed',
+            'discount_value' => 'sometimes|numeric|min:0',
+            'minimum_order_amount' => 'sometimes|numeric|min:0',
+            'weekday' => 'sometimes|in:Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday',
+            'is_active' => 'sometimes|boolean',
+            'start_date' => 'sometimes|date',
+            'end_date' => 'sometimes|date|after_or_equal:start_date',
         ];
+    }
+
+    /**
+     * Configure the validator instance.
+     *
+     * This method adds custom validation logic to ensure that percentage
+     * discounts do not exceed 100%.
+     *
+     * @param \Illuminate\Validation\Validator $validator The validator instance
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        $validator->sometimes('discount_value', 'max:100', function ($input) {
+            return $input->discount_type === 'percentage';
+        });
     }
 }

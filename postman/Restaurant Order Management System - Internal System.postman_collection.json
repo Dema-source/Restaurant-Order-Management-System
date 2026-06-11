@@ -25,7 +25,7 @@
               "formdata": [
                 {
                   "key": "email",
-                  "value": "admin@restaurant.com",
+                  "value": "kitchen@restaurant.com",
                   "type": "text",
                   "uuid": "a6b2ca57-0027-47aa-b409-2d02319c6c66"
                 },
@@ -1196,7 +1196,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "value": "3vPkZJ4PJQnG3krt2255WgHfpoAlaU9TgPuLFmsOe28b4049",
                       "type": "string"
                     }
                   ]
@@ -1231,8 +1231,7 @@
                   "query": [
                     {
                       "key": "search",
-                      "value": "w",
-                      "type": "text"
+                      "value": "w"
                     }
                   ]
                 }
@@ -1247,7 +1246,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "USCnTNWPKMXZnC04DmTE9I1XViVTgJlk7LXjoXMy60367045",
+                      "value": "5VZdKO4scfZYmHOQDnr3J2m2p6lxICUoGqTOICAx4c81c1d5",
                       "type": "string"
                     }
                   ]
@@ -1265,37 +1264,25 @@
                   "formdata": [
                     {
                       "key": "name",
-                      "value": "test discount",
+                      "value": "third discount",
                       "type": "text",
                       "uuid": "2c9e70a1-0530-4c8a-b3a9-e0d619b1eba6"
                     },
                     {
-                      "key": "code",
-                      "value": "testDescription2",
-                      "type": "text",
-                      "uuid": "4f6c4c96-c967-4612-bf01-880d1ba7a80c"
-                    },
-                    {
-                      "key": "type",
-                      "value": "fixed",
-                      "type": "text",
-                      "uuid": "94cee008-3ab4-4759-9ec5-f704a3c5e69e"
-                    },
-                    {
-                      "key": "value",
+                      "key": "discount_value",
                       "value": "20",
                       "type": "text",
                       "uuid": "647ce30b-4e85-44a7-8d4e-ff3912e9ea54"
                     },
                     {
                       "key": "start_date",
-                      "value": "2026-6-3",
+                      "value": "2026-6-10",
                       "type": "text",
                       "uuid": "596c9087-a7d2-44bc-9333-ac94b423321c"
                     },
                     {
                       "key": "end_date",
-                      "value": "2026-6-10",
+                      "value": "2026-6-30",
                       "type": "text",
                       "uuid": "856d3f75-1e64-40e9-ab89-98cb47edd1cf"
                     },
@@ -1304,6 +1291,24 @@
                       "type": "text",
                       "uuid": "bda77673-7bfa-4042-ae91-ce1e3b9991dc",
                       "value": "test discount description"
+                    },
+                    {
+                      "key": "discount_type",
+                      "value": "fixed",
+                      "type": "text",
+                      "uuid": "5db86bec-b377-4c64-a265-9efd31f8bde5"
+                    },
+                    {
+                      "key": "minimum_order_amount",
+                      "value": "8",
+                      "type": "text",
+                      "uuid": "21f24479-a3b4-478d-8fb5-891bfa548b70"
+                    },
+                    {
+                      "key": "weekday",
+                      "value": "Wednesday",
+                      "type": "text",
+                      "uuid": "47931ee1-ee88-443a-a2a3-fd1ff0f91694"
                     }
                   ]
                 },
@@ -1337,7 +1342,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "value": "zpslRYoZBLCXPxASLtI3MHELVG5egOBBL4vbhI2M59a92997",
                       "type": "string"
                     }
                   ]
@@ -1360,7 +1365,7 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/admin/discounts/14",
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts/1",
                   "protocol": "http",
                   "host": [
                     "127",
@@ -1373,7 +1378,7 @@
                     "api",
                     "admin",
                     "discounts",
-                    "14"
+                    "1"
                   ]
                 }
               },
@@ -1387,7 +1392,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "value": "AF9ZyooN6dCsuqEy9HQ8uCyg4qhGo3kYxnlfevjr90eab55b",
                       "type": "string"
                     }
                   ]
@@ -1407,7 +1412,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"type\": \"percentage\"\r\n}",
+                  "raw": "{\r\n    \"discount_type\": \"percentage\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -1442,7 +1447,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "value": "AF9ZyooN6dCsuqEy9HQ8uCyg4qhGo3kYxnlfevjr90eab55b",
                       "type": "string"
                     }
                   ]
@@ -1460,7 +1465,7 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/admin/discounts/13",
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts/2",
                   "protocol": "http",
                   "host": [
                     "127",
@@ -1473,7 +1478,7 @@
                     "api",
                     "admin",
                     "discounts",
-                    "13"
+                    "2"
                   ]
                 }
               },
@@ -1487,7 +1492,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "value": "AF9ZyooN6dCsuqEy9HQ8uCyg4qhGo3kYxnlfevjr90eab55b",
                       "type": "string"
                     }
                   ]
@@ -1501,7 +1506,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/admin/discounts/12/toggle-active",
+                  "raw": "http://127.0.0.1:8000/api/admin/discounts/1/toggle-active",
                   "protocol": "http",
                   "host": [
                     "127",
@@ -1514,7 +1519,7 @@
                     "api",
                     "admin",
                     "discounts",
-                    "12",
+                    "1",
                     "toggle-active"
                   ]
                 }
@@ -1529,7 +1534,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "UL0fiSm4nnlL0FF2Ng56El7S5P38iD7IWqP5a26001f77559",
+                      "value": "AF9ZyooN6dCsuqEy9HQ8uCyg4qhGo3kYxnlfevjr90eab55b",
                       "type": "string"
                     }
                   ]
@@ -1550,12 +1555,6 @@
                       "value": "TestOne",
                       "type": "text",
                       "uuid": "a997edec-e007-4b63-b5b2-ac6f633c1952"
-                    },
-                    {
-                      "key": "code",
-                      "value": "TestOne",
-                      "type": "text",
-                      "uuid": "65771126-5d1c-4dfd-9c2c-a9bd787d49ae"
                     }
                   ]
                 },
@@ -1650,7 +1649,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "pZS1thJdeBJsTIrLX0CpEKyK6aLdkOHL3sgSWZLE41ceec2b",
+                      "value": "wVdAUxhKwKf6G6QEOrGUwb6PL3UWBkV4pRA0YlbJ89cffb76",
                       "type": "string"
                     }
                   ]
@@ -1673,7 +1672,7 @@
                   "formdata": []
                 },
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/admin/inventories/18",
+                  "raw": "http://127.0.0.1:8000/api/admin/inventories/2",
                   "protocol": "http",
                   "host": [
                     "127",
@@ -1686,7 +1685,7 @@
                     "api",
                     "admin",
                     "inventories",
-                    "18"
+                    "2"
                   ]
                 }
               },
@@ -1700,7 +1699,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "iWZbKljILqv1BiY1HEE3lzRghzSPRw3NDOLFlofl76f85822",
+                      "value": "0x4UAakYeURoQy2Cg3aUBXRLKBmmtG1TdPjAkuTwfb0220c9",
                       "type": "string"
                     }
                   ]
@@ -1723,12 +1722,12 @@
                   "formdata": [
                     {
                       "key": "menu_item_id",
-                      "value": "18",
+                      "value": "3",
                       "type": "text"
                     },
                     {
                       "key": "quantity",
-                      "value": "5",
+                      "value": "10",
                       "type": "text"
                     },
                     {
@@ -1766,7 +1765,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "iWZbKljILqv1BiY1HEE3lzRghzSPRw3NDOLFlofl76f85822",
+                      "value": "0x4UAakYeURoQy2Cg3aUBXRLKBmmtG1TdPjAkuTwfb0220c9",
                       "type": "string"
                     }
                   ]
@@ -1789,12 +1788,12 @@
                   "formdata": [
                     {
                       "key": "menu_item_id",
-                      "value": "18",
+                      "value": "1",
                       "type": "text"
                     },
                     {
                       "key": "quantity",
-                      "value": "2",
+                      "value": "1",
                       "type": "text"
                     },
                     {
@@ -1898,7 +1897,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "pZS1thJdeBJsTIrLX0CpEKyK6aLdkOHL3sgSWZLE41ceec2b",
+                      "value": "kQfE4ktoHkEGGRRqxpVpeR9CWKFDh8uV6jkmlV5Z2d23ce60",
                       "type": "string"
                     }
                   ]
@@ -1917,7 +1916,7 @@
                   }
                 ],
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/admin/inventories/stock-level/18",
+                  "raw": "http://127.0.0.1:8000/api/admin/inventories/stock-level/1",
                   "protocol": "http",
                   "host": [
                     "127",
@@ -1931,7 +1930,7 @@
                     "admin",
                     "inventories",
                     "stock-level",
-                    "18"
+                    "1"
                   ]
                 }
               },
@@ -2143,6 +2142,733 @@
                     "admin",
                     "inventories",
                     "waste-report"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Customer",
+          "item": [
+            {
+              "name": "index",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "SP5muWSI5qWils8crZ9OgUxsJE5rtelrclolOoDN40d71070",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/customers?search=Sawsan",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "customers"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "Sawsan",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "F1zPF7zeb6QzB3VxVLtoLHSdW13j1taAx3WholXab2c5309b",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "test customer",
+                      "type": "text",
+                      "uuid": "2c9e70a1-0530-4c8a-b3a9-e0d619b1eba6"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "123456789",
+                      "type": "text",
+                      "uuid": "4f6c4c96-c967-4612-bf01-880d1ba7a80c"
+                    },
+                    {
+                      "key": "address",
+                      "value": "test address",
+                      "type": "text",
+                      "uuid": "94cee008-3ab4-4759-9ec5-f704a3c5e69e"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/customers",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "customers"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "W3IogJalfI5FiVOoSA8Wc7bH5wMkxlpCPHOZzYkRb1204d4b",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/customers/14",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "customers",
+                    "14"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "F1zPF7zeb6QzB3VxVLtoLHSdW13j1taAx3WholXab2c5309b",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"alternate_phone\": \"000000\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/customers/16",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "customers",
+                    "16"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "F1zPF7zeb6QzB3VxVLtoLHSdW13j1taAx3WholXab2c5309b",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/customers/15",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "customers",
+                    "15"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "find by phone",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "SP5muWSI5qWils8crZ9OgUxsJE5rtelrclolOoDN40d71070",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/customers/phone/+963 944 567 123",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "customers",
+                    "phone",
+                    "+963 944 567 123"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Order",
+          "item": [
+            {
+              "name": "index",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "kQfE4ktoHkEGGRRqxpVpeR9CWKFDh8uV6jkmlV5Z2d23ce60",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/orders",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "VX540f7blxoGPt8vNQpDVE5GFTgf6y2GTdmIuueMa27536a6",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"customer\": {\r\n        \"phone\": \"65466546546\",\r\n        \"name\": \"test customer\",\r\n        \"address\": \"123 Main St\",\r\n        \"alternate_phone\": null,\r\n        \"notes\": null\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"menu_item_id\": 3,\r\n            \"quantity\": 1,\r\n            \"notes\": \"No onions\"\r\n        }\r\n    ],\r\n    \"delivery_address\": \"123 Main St, Apt 4\",\r\n    \"notes\": \"Please call upon arrival\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/orders",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "aUFGNiY7K79eXujZyOAYU7J8XQhSHccjT8ME4gkb0acc71dd",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/orders/19",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "orders",
+                    "19"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "OH0MsvuEBlLSczKeQZ2PqNoLm7QD2ZcD62K3aYffff7c1c9c",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"delivery_address\": \"test address\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/orders/23",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "orders",
+                    "23"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "OH0MsvuEBlLSczKeQZ2PqNoLm7QD2ZcD62K3aYffff7c1c9c",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/orders/24",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "orders",
+                    "24"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get by customer",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "t4IvoSPmqYNVYJqQi89ObOFgG4ucHV4MeNSbs8xW814c1291",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/orders/customer/18",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "orders",
+                    "customer",
+                    "18"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get by status",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "t4IvoSPmqYNVYJqQi89ObOFgG4ucHV4MeNSbs8xW814c1291",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/orders/status/new",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "orders",
+                    "status",
+                    "new"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "VJimbfqIU4vBcwKVVG5ZW5Z9i3WEnBRAvORQsOU092b0f48b",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"delivered\"\r\n}"
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/orders/23/status",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "orders",
+                    "23",
+                    "status"
                   ]
                 }
               },
@@ -2460,6 +3186,218 @@
                     "public",
                     "menu-items",
                     "4"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Order",
+          "item": [
+            {
+              "name": "index",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "8ELL5FjkzhAKepEHHHP5MiYyf24yTIVBMlMXLzXL3c17a20d",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/kitchen/orders?status=delivered",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "kitchen",
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "delivered",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "8ELL5FjkzhAKepEHHHP5MiYyf24yTIVBMlMXLzXL3c17a20d",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/kitchen/orders/27",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "kitchen",
+                    "orders",
+                    "27"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get by status",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "8ELL5FjkzhAKepEHHHP5MiYyf24yTIVBMlMXLzXL3c17a20d",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/kitchen/orders/status/delivered",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "kitchen",
+                    "orders",
+                    "status",
+                    "delivered"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "8ELL5FjkzhAKepEHHHP5MiYyf24yTIVBMlMXLzXL3c17a20d",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"preparing\"\r\n}"
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/kitchen/orders/27/status",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "kitchen",
+                    "orders",
+                    "27",
+                    "status"
                   ]
                 }
               },
@@ -3444,6 +4382,642 @@
                     "cashier",
                     "inventories",
                     "waste-report"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Customer",
+          "item": [
+            {
+              "name": "index",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "SP5muWSI5qWils8crZ9OgUxsJE5rtelrclolOoDN40d71070",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/cashier?search=Sawsan",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "cashier"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "Sawsan"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "F1zPF7zeb6QzB3VxVLtoLHSdW13j1taAx3WholXab2c5309b",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "test customer",
+                      "type": "text",
+                      "uuid": "2c9e70a1-0530-4c8a-b3a9-e0d619b1eba6"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "123456789",
+                      "type": "text",
+                      "uuid": "4f6c4c96-c967-4612-bf01-880d1ba7a80c"
+                    },
+                    {
+                      "key": "address",
+                      "value": "test address",
+                      "type": "text",
+                      "uuid": "94cee008-3ab4-4759-9ec5-f704a3c5e69e"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/customers",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "customers"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "W3IogJalfI5FiVOoSA8Wc7bH5wMkxlpCPHOZzYkRb1204d4b",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/customers/14",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "customers",
+                    "14"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "F1zPF7zeb6QzB3VxVLtoLHSdW13j1taAx3WholXab2c5309b",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"alternate_phone\": \"000000\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/customers/16",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "customers",
+                    "16"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "find by phone",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "SP5muWSI5qWils8crZ9OgUxsJE5rtelrclolOoDN40d71070",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/customers/phone/+963 944 567 123",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "customers",
+                    "phone",
+                    "+963 944 567 123"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Order",
+          "item": [
+            {
+              "name": "index",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "TT0Y7mShZbk2cYlbvrhOHvwn7RQd1nxsMWMMMRF6a93cd1cb",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/orders",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "store",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "TT0Y7mShZbk2cYlbvrhOHvwn7RQd1nxsMWMMMRF6a93cd1cb",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"customer\": {\r\n        \"phone\": \"565464644\",\r\n        \"name\": \"test customer22\",\r\n        \"address\": \"123 Main St\",\r\n        \"alternate_phone\": null,\r\n        \"notes\": null\r\n    },\r\n    \"items\": [\r\n        {\r\n            \"menu_item_id\": 3,\r\n            \"quantity\": 1,\r\n            \"notes\": \"No onions\"\r\n        }\r\n    ],\r\n    \"delivery_address\": \"123 Main St, Apt 4\",\r\n    \"notes\": \"Please call upon arrival\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/orders",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "TT0Y7mShZbk2cYlbvrhOHvwn7RQd1nxsMWMMMRF6a93cd1cb",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/orders/27",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "orders",
+                    "27"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "muOW3cGZKPo8VGYW9B6sXhRG2Yohrc6CKqZwKEqS02ac7257",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Accept-Language",
+                    "value": "ar",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"delivery_address\": \"address address address\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/orders/24",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "orders",
+                    "24"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get by customer",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "muOW3cGZKPo8VGYW9B6sXhRG2Yohrc6CKqZwKEqS02ac7257",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/orders/customer/19",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "orders",
+                    "customer",
+                    "19"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get by status",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "muOW3cGZKPo8VGYW9B6sXhRG2Yohrc6CKqZwKEqS02ac7257",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/orders/status/delivered",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "orders",
+                    "status",
+                    "delivered"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "muOW3cGZKPo8VGYW9B6sXhRG2Yohrc6CKqZwKEqS02ac7257",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"delivered\"\r\n}"
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/cashier/orders/27/status",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "cashier",
+                    "orders",
+                    "27",
+                    "status"
                   ]
                 }
               },

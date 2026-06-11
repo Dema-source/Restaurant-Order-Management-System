@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->string('image')->nullable();
             $table->boolean('is_available')->default(true);
+            $table->integer('stock_quantity')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

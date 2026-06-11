@@ -4,8 +4,10 @@
   use App\Http\Controllers\Api\Admin\MenuItemController;
   use App\Http\Controllers\Api\Admin\UserController;
   use App\Http\Controllers\Api\Admin\DiscountController as AdminDiscountController;
+  use App\Http\Controllers\Api\CustomerController;
   use App\Http\Controllers\Api\DiscountController;
   use App\Http\Controllers\Api\InventoryMovementController;
+  use App\Http\Controllers\Api\OrderController;
   use App\Http\Controllers\Api\RolesPermissions\RoleController;
   use Illuminate\Support\Facades\Route;
 
@@ -49,12 +51,10 @@
   |--------------------------------------------------------------------------
   */
   // API: {{baseURL}}/api/admin/discounts
-  Route::prefix('discounts')->group(function () {
-    Route::post('/{id}/duplicate', [AdminDiscountController::class, 'duplicate']);
-    Route::patch('/{id}/toggle-active', [AdminDiscountController::class, 'toggleActive']);
-    Route::apiResource('/', AdminDiscountController::class)->only(['store', 'update', 'destroy']);
-    Route::apiResource('/', DiscountController::class)->only(['index', 'show']);
-  });
+  Route::apiResource('discounts', DiscountController::class)->only(['index', 'show']);
+  Route::post('discounts/{id}/duplicate', [AdminDiscountController::class, 'duplicate']);
+  Route::patch('discounts/{id}/toggle-active', [AdminDiscountController::class, 'toggleActive']);
+  Route::apiResource('discounts', AdminDiscountController::class)->only(['store', 'update', 'destroy']);
 
   /*
   |--------------------------------------------------------------------------
@@ -80,3 +80,29 @@
     Route::get('/', [InventoryMovementController::class, 'index']);
     Route::get('/{id}', [InventoryMovementController::class, 'show']);
   });
+
+  /*
+  |--------------------------------------------------------------------------
+  | Orders - Full Access
+  |--------------------------------------------------------------------------
+  */
+  // API: {{baseURL}}/api/admin/orders
+  Route::apiResource('orders', OrderController::class);
+
+  // Additional order routes
+  Route::prefix('orders')->group(function () {
+    Route::get('/customer/{customerId}', [OrderController::class, 'getByCustomer']);
+    Route::get('/status/{status}', [OrderController::class, 'getByStatus']);
+    Route::patch('/{id}/status', [OrderController::class, 'updateStatus']);
+  });
+
+  /*
+  |--------------------------------------------------------------------------
+  | Customers - Full Access
+  |--------------------------------------------------------------------------
+  */
+  // API: {{baseURL}}/api/admin/customers
+  Route::apiResource('customers', CustomerController::class);
+
+  // Find customer by phone
+  Route::get('/customers/phone/{phone}', [CustomerController::class, 'findByPhone']);

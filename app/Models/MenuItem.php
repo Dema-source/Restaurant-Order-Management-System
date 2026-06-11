@@ -20,7 +20,8 @@ class MenuItem extends Model
         'description',
         'price',
         'image',
-        'is_available'
+        'is_available',
+        'stock_quantity'
     ];
 
     public array $translatable = [
@@ -74,7 +75,17 @@ class MenuItem extends Model
     {
         return $this->hasMany(InventoryMovement::class);
     }
-    
+
+    /**
+     * Get all of the order items for the MenuItem
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
      // Scopes
     /**
      * Scope to filter only available menuItems.

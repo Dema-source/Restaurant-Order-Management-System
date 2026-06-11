@@ -23,8 +23,6 @@ use Illuminate\Database\Seeder;
  *
  * Note: Run CategorySeeder before this seeder to ensure categories exist.
  *
- * @author Your Name
- * @since 1.0.0
  */
 class MenuItemSeeder extends Seeder
 {

@@ -46,9 +46,10 @@ class DiscountFactory extends Factory
                 'New Customer Bonus',
                 'Holiday Offer',
             ]),
-            'code' => strtoupper(fake()->unique()->lexify('??????')),
-            'type' => $type,
-            'value' => $value,
+            'discount_type' => $type,
+            'discount_value' => $value,
+            'minimum_order_amount' => fake()->optional(0.5)->numberBetween(20, 200),
+            'weekday' => fake()->optional(0.3)->randomElement(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']),
             'start_date' => fake()->optional(0.7)->date,
             'end_date' => function (array $attributes) {
                 // If start_date exists, end_date should be after it
@@ -57,7 +58,6 @@ class DiscountFactory extends Factory
                     : fake()->optional(0.5)->date;
             },
             'is_active' => fake()->boolean(80), // 80% chance of being active
-            'description' => fake()->optional(0.6)->sentence(),
         ];
     }
 
@@ -69,8 +69,8 @@ class DiscountFactory extends Factory
     public function percentage(): static
     {
         return $this->state(fn (array $attributes) => [
-            'type' => 'percentage',
-            'value' => fake()->numberBetween(5, 50),
+            'discount_type' => 'percentage',
+            'discount_value' => fake()->numberBetween(5, 50),
         ]);
     }
 
@@ -82,8 +82,8 @@ class DiscountFactory extends Factory
     public function fixed(): static
     {
         return $this->state(fn (array $attributes) => [
-            'type' => 'fixed',
-            'value' => fake()->numberBetween(5, 100),
+            'discount_type' => 'fixed',
+            'discount_value' => fake()->numberBetween(5, 100),
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Discount extends Model
@@ -12,22 +13,23 @@ class Discount extends Model
 
     protected $fillable = [
         'name',
-        'code',
-        'type',
-        'value',
+        'discount_type',
+        'discount_value',
+        'minimum_order_amount',
+        'weekday',
+        'is_active',
         'start_date',
         'end_date',
-        'is_active',
-        'description',
     ];
 
     protected function casts(): array
     {
         return [
-            'value'      => 'decimal:2',
+            'discount_value' => 'decimal:2',
+            'minimum_order_amount' => 'decimal:2',
             'start_date' => 'date',
-            'end_date'   => 'date',
-            'is_active'  => 'boolean',
+            'end_date' => 'date',
+            'is_active' => 'boolean',
         ];
     }
 
@@ -50,6 +52,17 @@ class Discount extends Model
         });
     }
 
+    // Relations
+    /**
+     * The orders that belong to the discount
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
     // Scopes
     /**
      * Scope to filter only active discounts.
@@ -63,7 +76,30 @@ class Discount extends Model
     }
 
     /**
-     * Scope to search discounts by name or code.
+     * Scope to filter current discounts.
+     *
+     * Current means:
+     * - active
+     * - inside date range
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCurrent($query)
+    {
+        return $query->where('is_active', true)
+            ->where(function ($q) {
+                $q->whereNull('start_date')
+                    ->orWhere('start_date', '<=', now());
+            })
+            ->where(function ($q) {
+                $q->whereNull('end_date')
+                    ->orWhere('end_date', '>=', now());
+            });
+    }
+
+    /**
+     * Scope to search discounts by name.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param string $search The search term
@@ -71,8 +107,7 @@ class Discount extends Model
      */
     public function scopeSearch($query, string $search)
     {
-        return $query->where('name', 'like', "%{$search}%")
-            ->orWhere('code', 'like', "%{$search}%");
+        return $query->where('name', 'like', "%{$search}%");
     }
 
     /**
@@ -97,28 +132,6 @@ class Discount extends Model
     }
 
     /**
-     * Scope to filter discounts by validity period.
-     *
-     * This scope filters discounts that are currently valid based on
-     * their start_date and end_date. A discount is valid if:
-     * - start_date is null or in the past
-     * - end_date is null or in the future
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeValid($query)
-    {
-        return $query->where(function ($q) {
-            $q->whereNull('start_date')
-              ->orWhere('start_date', '<=', now());
-        })->where(function ($q) {
-            $q->whereNull('end_date')
-              ->orWhere('end_date', '>=', now());
-        });
-    }
-
-    /**
      * Scope to filter discounts by type.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
@@ -127,7 +140,34 @@ class Discount extends Model
      */
     public function scopeByType($query, string $type)
     {
-        return $query->where('type', $type);
+        return $query->where('discount_type', $type);
+    }
+
+    /**
+     * Scope to filter discounts by weekday.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $weekday The weekday (Monday, Tuesday, etc.)
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeByWeekday($query, string $weekday)
+    {
+        return $query->where('weekday', $weekday);
+    }
+
+    /**
+     * Scope to filter discounts by minimum order amount.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param float $subtotal The order subtotal
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeByMinimumOrderAmount($query, float $subtotal)
+    {
+        return $query->where(function ($q) use ($subtotal) {
+            $q->whereNull('minimum_order_amount')
+                ->orWhere('minimum_order_amount', '<=', $subtotal);
+        });
     }
 
     /**
@@ -137,9 +177,7 @@ class Discount extends Model
      * - is_active is true
      * - start_date is null or in the past
      * - end_date is null or in the future
-     *
-     * This method is useful for business logic when applying discounts
-     * to orders or checking if a discount can be used.
+     * - weekday is null or matches today
      *
      * @return bool True if valid, false otherwise
      */
@@ -157,34 +195,44 @@ class Discount extends Model
             return false;
         }
 
+        if ($this->weekday && $this->weekday !== now()->format('l')) {
+            return false;
+        }
+
         return true;
     }
 
     /**
-     * Check if the discount has expired.
+     * Check if the discount is eligible for a given subtotal.
      *
-     * A discount is considered expired if the end_date has passed.
-     * This method is useful for filtering out expired discounts
-     * in business logic or displaying expiration status.
-     *
-     * @return bool True if expired, false otherwise
+     * @param float $subtotal The order subtotal
+     * @return bool True if eligible, false otherwise
      */
-    public function isExpired(): bool
+    public function isEligible(float $subtotal): bool
     {
-        return $this->end_date && $this->end_date->isPast();
+        if (!$this->isValid()) {
+            return false;
+        }
+
+        if ($this->minimum_order_amount && $subtotal < $this->minimum_order_amount) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
-     * Check if the discount has not started yet.
+     * Calculate the discount amount for a given subtotal.
      *
-     * A discount is considered not started if the start_date is in the future.
-     * This method is useful for displaying upcoming discounts or
-     * preventing use of discounts before their validity period.
-     *
-     * @return bool True if not started, false otherwise
+     * @param float $subtotal The order subtotal
+     * @return float The discount amount
      */
-    public function isNotStarted(): bool
+    public function calculateDiscountAmount(float $subtotal): float
     {
-        return $this->start_date && $this->start_date->isFuture();
+        if ($this->discount_type === 'percentage') {
+            return ($subtotal * $this->discount_value) / 100;
+        }
+
+        return $this->discount_value;
     }
 }

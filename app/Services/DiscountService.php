@@ -33,11 +33,11 @@ class DiscountService extends BaseService
      * Duplicate an existing discount with optional overrides.
      *
      * This method creates a new discount based on an existing one,
-     * copying all fields except id, code, and timestamps. The user can
-     * override specific fields like name and code.
+     * copying all fields except id and timestamps. The user can
+     * override specific fields like name, discount_type, etc.
      *
      * @param int $id The original discount ID
-     * @param array $overrides Fields to override (name, code, etc.)
+     * @param array $overrides Fields to override (name, discount_type, etc.)
      * @return Model The newly created discount
      */
     public function duplicate(int $id, array $overrides = []): Model
@@ -51,7 +51,7 @@ class DiscountService extends BaseService
         $data = $original->toArray();
 
         // Remove fields that should not be copied
-        unset($data['id'], $data['code'], $data['created_at'], $data['updated_at'], $data['deleted_at']);
+        unset($data['id'], $data['created_at'], $data['updated_at'], $data['deleted_at']);
 
         // Merge with user overrides
         $data = array_merge($data, $overrides);
@@ -68,5 +68,42 @@ class DiscountService extends BaseService
     public function toggleActive(int $id): bool
     {
         return $this->repository->toggleActive($id);
+    }
+
+    /**
+     * Find the best discount for a given subtotal.
+     *
+     * This method searches for the best applicable discount based on:
+     * - Active status
+     * - Minimum order amount requirement
+     * - Valid date range
+     * - Weekday condition
+     * - Maximum discount value
+     *
+     * Process:
+     * 1. Get active discounts
+     * 2. Validate date range
+     * 3. Validate weekday condition
+     * 4. Validate minimum_order_amount condition
+     * 5. Calculate actual discount amount
+     * 6. Compare all eligible discounts
+     * 7. Return the discount with the highest monetary value
+     *
+     * @param float $subtotal The order subtotal
+     * @return array|null The discount info or null if none eligible
+     */
+    public function findBestDiscount(float $subtotal): ?array
+    {
+        $discount = $this->repository->findBestDiscount($subtotal);
+
+        if (!$discount) {
+            return null;
+        }
+
+        return [
+            'discount_id' => $discount->id,
+            'discount_name' => $discount->name,
+            'discount_amount' => $discount->calculateDiscountAmount($subtotal),
+        ];
     }
 }

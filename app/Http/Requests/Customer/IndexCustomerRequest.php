@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Http\Requests\Discount;
+namespace App\Http\Requests\Customer;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Form request for filtering discounts.
+ * Form request for filtering customers.
  *
- * This request handles the validation for filtering discounts by
- * search term, active status, and date range.
+ * This request handles the validation for filtering customers by
+ * search term and date range.
  *
  * Validation rules ensure only valid filter parameters are accepted.
  */
-class IndexDiscountRequest extends FormRequest
+class IndexCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
-     * Only admin and cashier users are authorized to view discounts.
+     * All authenticated users are authorized to view customers.
      *
      * @return bool True if authorized, false otherwise
      */
     public function authorize(): bool
     {
-        return $this->user()?->hasAnyRole(['super_administrator', 'Cashier']) ?? false;
+        return true;
     }
 
     /**
@@ -35,9 +35,6 @@ class IndexDiscountRequest extends FormRequest
     {
         return [
             'search' => 'nullable|string|max:255',
-            'is_active' => 'nullable|boolean',
-            'discount_type' => 'nullable|in:percentage,fixed',
-            'weekday' => 'nullable|in:Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday',
             'created_at_from' => 'nullable|date|date_format:Y-m-d',
             'created_at_to' => 'nullable|date|date_format:Y-m-d|after_or_equal:created_at_from',
             'per_page' => 'nullable|integer|min:1|max:100',

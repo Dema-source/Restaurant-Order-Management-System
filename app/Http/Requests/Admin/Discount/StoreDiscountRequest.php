@@ -35,14 +35,14 @@ class StoreDiscountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'code' => 'nullable|string|max:50|unique:discounts,code',
-            'type' => 'required|in:percentage,fixed',
-            'value' => 'required|numeric|min:0',
-            'start_date' => 'nullable|date|after_or_equal:today',
-            'end_date' => 'nullable|date|after:start_date',
+            'name' => 'required|string|max:255|unique:discounts,name',
+            'discount_type' => 'required|in:percentage,fixed',
+            'discount_value' => 'required|numeric|min:0',
+            'minimum_order_amount' => 'nullable|numeric|min:0',
+            'weekday' => 'nullable|in:Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday',
             'is_active' => 'boolean',
-            'description' => 'nullable|string|max:1000',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
         ];
     }
 
@@ -57,8 +57,8 @@ class StoreDiscountRequest extends FormRequest
      */
     public function withValidator($validator)
     {
-        $validator->sometimes('value', 'max:100', function ($input) {
-            return $input->type === 'percentage';
+        $validator->sometimes('discount_value', 'max:100', function ($input) {
+            return $input->discount_type === 'percentage';
         });
     }
 }
