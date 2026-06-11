@@ -6,6 +6,7 @@ use App\Models\OrderStatusLog;
 use App\Repositories\Contracts\OrderStatusLogRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class OrderStatusLogRepository extends BaseRepository implements OrderStatusLogRepositoryInterface
 {
@@ -46,5 +47,42 @@ class OrderStatusLogRepository extends BaseRepository implements OrderStatusLogR
             ->with(['changedBy'])
             ->latest('created_at')
             ->get();
+    }
+
+    /**
+     * Get paginated status logs with optional filters.
+     *
+     * @param array $filters The filter criteria
+     * @param int $perPage Number of items per page
+     * @return LengthAwarePaginator Paginated status logs
+     */
+    public function getPaginatedWithFilters(array $filters, int $perPage = 15): LengthAwarePaginator
+    {
+        $query = $this->model->newQuery();
+
+        // Apply search filter if provided
+        if (isset($filters['search']) && !empty($filters['search'])) {
+            $query->search($filters['search']);
+        }
+
+        // Apply order filter if provided
+        if (isset($filters['order_id']) && !empty($filters['order_id'])) {
+            $query->byOrder($filters['order_id']);
+        }
+
+        // Apply status filter if provided
+        if (isset($filters['status']) && !empty($filters['status'])) {
+            $query->byStatus($filters['status']);
+        }
+
+        // Apply date range filter if provided
+        $query->dateRange(
+            from: $filters['created_at_from'] ?? null,
+            to: $filters['created_at_to'] ?? null
+        );
+
+        return $query->with(['order', 'changedBy'])
+            ->latest('created_at')
+            ->paginate($perPage);
     }
 }

@@ -91,4 +91,70 @@ class OrderStatusLog extends Model
     {
         return $this->belongsTo(User::class, 'changed_by');
     }
+
+    // Scopes
+    /**
+     * Scope to search status logs by order number or notes.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $search The search term
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSearch($query, string $search)
+    {
+        return $query->where(function ($q) use ($search) {
+            $q->where('notes', 'like', "%{$search}%")
+                ->orWhereHas('order', function ($orderQuery) use ($search) {
+                    $orderQuery->where('order_number', 'like', "%{$search}%");
+                });
+        });
+    }
+
+    /**
+     * Scope to filter status logs by date range.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string|null $from Start date (Y-m-d format)
+     * @param string|null $to End date (Y-m-d format)
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeDateRange($query, ?string $from = null, ?string $to = null)
+    {
+        if ($from) {
+            $query->whereDate('created_at', '>=', $from);
+        }
+
+        if ($to) {
+            $query->whereDate('created_at', '<=', $to);
+        }
+
+        return $query;
+    }
+
+    /**
+     * Scope to filter status logs by order ID.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param int $orderId The order ID
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeByOrder($query, int $orderId)
+    {
+        return $query->where('order_id', $orderId);
+    }
+
+    /**
+     * Scope to filter status logs by status.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $status The status (old or new)
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeByStatus($query, string $status)
+    {
+        return $query->where(function ($q) use ($status) {
+            $q->where('old_status', $status)
+                ->orWhere('new_status', $status);
+        });
+    }
 }

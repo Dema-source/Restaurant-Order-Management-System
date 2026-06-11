@@ -5,12 +5,25 @@ namespace App\Services;
 use App\Repositories\Contracts\OrderStatusLogRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class OrderStatusLogService extends BaseService
 {
     public function __construct(OrderStatusLogRepositoryInterface $repository)
     {
         parent::__construct($repository);
+    }
+
+    /**
+     * Get paginated status logs with optional filters.
+     *
+     * @param array $filters The filter criteria
+     * @param int $perPage Number of items per page
+     * @return LengthAwarePaginator Paginated status logs
+     */
+    public function getPaginatedWithFilters(array $filters, int $perPage = 15): LengthAwarePaginator
+    {
+        return $this->repository->getPaginatedWithFilters($filters, $perPage);
     }
 
     /**
