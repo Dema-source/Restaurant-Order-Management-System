@@ -3,6 +3,7 @@
   use App\Http\Controllers\Api\Admin\CategoryController;
   use App\Http\Controllers\Api\Admin\DiscountController as AdminDiscountController;
   use App\Http\Controllers\Api\Admin\MenuItemController;
+  use App\Http\Controllers\Api\Admin\ReportController;
   use App\Http\Controllers\Api\Admin\UserController;
   use App\Http\Controllers\Api\RolesPermissions\RoleController;
   use App\Http\Controllers\Api\CustomerController;
@@ -117,3 +118,13 @@
 
   // Get status logs for a specific order
   Route::get('/order-status-logs/order/{orderId}', [OrderStatusLogController::class, 'getLogsByOrder']);
+
+  /*
+   * |--------------------------------------------------------------------------
+   * | Reports - Full Access
+   * |--------------------------------------------------------------------------
+   */
+  Route::prefix('reports')->group(function () {
+    Route::get('/sales', [ReportController::class, 'sales']);
+    Route::get('/popular-items', [ReportController::class, 'popularItems']);
+  });

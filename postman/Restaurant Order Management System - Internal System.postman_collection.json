@@ -11,6 +11,19 @@
       "item": [
         {
           "name": "login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
           "request": {
             "method": "POST",
             "header": [
@@ -25,7 +38,7 @@
               "formdata": [
                 {
                   "key": "email",
-                  "value": "kitchen@restaurant.com",
+                  "value": "admin@restaurant.com",
                   "type": "text",
                   "uuid": "a6b2ca57-0027-47aa-b409-2d02319c6c66"
                 },
@@ -1246,7 +1259,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "5VZdKO4scfZYmHOQDnr3J2m2p6lxICUoGqTOICAx4c81c1d5",
+                      "value": "{{auth_secret_0ynd}}",
                       "type": "string"
                     }
                   ]
@@ -1264,27 +1277,27 @@
                   "formdata": [
                     {
                       "key": "name",
-                      "value": "third discount",
                       "type": "text",
-                      "uuid": "2c9e70a1-0530-4c8a-b3a9-e0d619b1eba6"
+                      "uuid": "2c9e70a1-0530-4c8a-b3a9-e0d619b1eba6",
+                      "value": "third discount333"
                     },
                     {
                       "key": "discount_value",
-                      "value": "20",
                       "type": "text",
-                      "uuid": "647ce30b-4e85-44a7-8d4e-ff3912e9ea54"
+                      "uuid": "647ce30b-4e85-44a7-8d4e-ff3912e9ea54",
+                      "value": "20"
                     },
                     {
                       "key": "start_date",
-                      "value": "2026-6-10",
                       "type": "text",
-                      "uuid": "596c9087-a7d2-44bc-9333-ac94b423321c"
+                      "uuid": "596c9087-a7d2-44bc-9333-ac94b423321c",
+                      "value": "2026-6-10"
                     },
                     {
                       "key": "end_date",
-                      "value": "2026-6-30",
                       "type": "text",
-                      "uuid": "856d3f75-1e64-40e9-ab89-98cb47edd1cf"
+                      "uuid": "856d3f75-1e64-40e9-ab89-98cb47edd1cf",
+                      "value": "2026-6-30"
                     },
                     {
                       "key": "description",
@@ -1294,21 +1307,21 @@
                     },
                     {
                       "key": "discount_type",
-                      "value": "fixed",
                       "type": "text",
-                      "uuid": "5db86bec-b377-4c64-a265-9efd31f8bde5"
+                      "uuid": "5db86bec-b377-4c64-a265-9efd31f8bde5",
+                      "value": "fixed"
                     },
                     {
                       "key": "minimum_order_amount",
-                      "value": "8",
                       "type": "text",
-                      "uuid": "21f24479-a3b4-478d-8fb5-891bfa548b70"
+                      "uuid": "21f24479-a3b4-478d-8fb5-891bfa548b70",
+                      "value": "8"
                     },
                     {
                       "key": "weekday",
-                      "value": "Wednesday",
                       "type": "text",
-                      "uuid": "47931ee1-ee88-443a-a2a3-fd1ff0f91694"
+                      "uuid": "47931ee1-ee88-443a-a2a3-fd1ff0f91694",
+                      "value": "Wednesday"
                     }
                   ]
                 },
@@ -2163,7 +2176,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "SP5muWSI5qWils8crZ9OgUxsJE5rtelrclolOoDN40d71070",
+                      "value": "",
                       "type": "string"
                     }
                   ]
@@ -2198,8 +2211,7 @@
                   "query": [
                     {
                       "key": "search",
-                      "value": "Sawsan",
-                      "type": "text"
+                      "value": "Sawsan"
                     }
                   ]
                 }
@@ -2831,7 +2843,7 @@
                   "bearer": [
                     {
                       "key": "token",
-                      "value": "VJimbfqIU4vBcwKVVG5ZW5Z9i3WEnBRAvORQsOU092b0f48b",
+                      "value": "YIBpSeSg0FZK7qfxVWmMyfUvYY8tswjAGUhvrbNx7b3c748b",
                       "type": "string"
                     }
                   ]
@@ -2854,7 +2866,7 @@
                   "raw": "{\r\n  \"status\": \"delivered\"\r\n}"
                 },
                 "url": {
-                  "raw": "http://127.0.0.1:8000/api/admin/orders/23/status",
+                  "raw": "http://127.0.0.1:8000/api/admin/orders/25/status",
                   "protocol": "http",
                   "host": [
                     "127",
@@ -2867,7 +2879,7 @@
                     "api",
                     "admin",
                     "orders",
-                    "23",
+                    "25",
                     "status"
                   ]
                 }
@@ -3023,6 +3035,129 @@
                     "order-status-logs",
                     "order",
                     "27"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Reports",
+          "item": [
+            {
+              "name": "popular items",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{auth_secret_02co}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/atom+xml",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/reports/popular-items",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "reports",
+                    "popular-items"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "sales",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{auth_secret_02co}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "http://127.0.0.1:8000/api/admin/reports/sales",
+                  "protocol": "http",
+                  "host": [
+                    "127",
+                    "0",
+                    "0",
+                    "1"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "reports",
+                    "sales"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_from",
+                      "value": "2024-01-01",
+                      "disabled": true
+                    },
+                    {
+                      "key": "date_to",
+                      "value": "2024-01-31",
+                      "disabled": true
+                    },
+                    {
+                      "key": "period",
+                      "value": "daily",
+                      "disabled": true
+                    }
                   ]
                 }
               },
@@ -5180,6 +5315,20 @@
           ]
         }
       ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "auth_secret_02co",
+      "secret": true
+    },
+    {
+      "key": "auth_secret",
+      "value": ""
+    },
+    {
+      "key": "auth_secret_0ynd",
+      "secret": true
     }
   ]
 }
