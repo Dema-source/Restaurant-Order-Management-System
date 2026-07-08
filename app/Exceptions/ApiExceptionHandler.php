@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Exceptions\UnauthorizedException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -25,7 +26,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * - ModelNotFoundException/NotFoundHttpException: Returns 404 for missing resources
  * - AuthenticationException: Returns 401 for unauthenticated requests
  * - Generic exceptions: Returns 500 with error message (debug mode only)
- *
  */
 class ApiExceptionHandler
 {
@@ -55,7 +55,7 @@ class ApiExceptionHandler
             return response()->json([
                 'success' => false,
                 'message' => 'Validation failed',
-                'errors'  => $e->errors(),
+                'errors' => $e->errors(),
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
@@ -75,6 +75,13 @@ class ApiExceptionHandler
                 'success' => false,
                 'message' => 'Unauthenticated',
             ], Response::HTTP_UNAUTHORIZED);
+        }
+        // Test
+        if ($e instanceof UnauthorizedException) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User does not have the right roles.',
+            ], Response::HTTP_FORBIDDEN);
         }
 
         // Handle all other exceptions as internal server errors

@@ -48,7 +48,7 @@ class CustomerService extends BaseService
             'name' => $data['name'] ?? null,
             'phone' => $phone,
             'alternate_phone' => $data['alternate_phone'] ?? null,
-            'address' => $data['address'],
+            'address' => $data['address'] ?? 'Default Address',
             'notes' => $data['notes'] ?? null,
         ]);
     }
