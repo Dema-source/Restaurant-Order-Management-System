@@ -10,6 +10,24 @@ use App\Models\Order;
 
 trait InteractsWithModels
 {
+    protected function createCategoryWithMenuItem(
+        array $categoryOverrides = [],
+        array $menuItemOverrides = []
+    ): array {
+        $category = Category::factory()->create($categoryOverrides);
+
+        $menuItem = MenuItem::factory()->create(array_merge([
+            'category_id' => $category->id,
+            'stock_quantity' => 10,
+            'is_available' => true,
+        ], $menuItemOverrides));
+
+        return [
+            'category' => $category->fresh(),
+            'menuItem' => $menuItem,
+        ];
+    }
+
     protected function createCategoryWithMenuItems(int $count = 1, array $categoryOverrides = [], array $menuItemOverrides = []): array
     {
         $category = Category::factory()->create($categoryOverrides);
@@ -20,10 +38,29 @@ trait InteractsWithModels
         ], $menuItemOverrides));
 
         // return $category->fresh();
-            return [
-        'category' => $category->fresh(),
-        'menuItem' => $menuItem,
-    ];
+        return [
+            'category' => $category->fresh(),
+            'menuItem' => $menuItem,
+        ];
+    }
+
+    protected function createCategoryWithCustomMenuItems(
+        array $categoryOverrides = [],
+        array $menuItems = []
+    ): array {
+        $category = Category::factory()->create($categoryOverrides);
+
+        $createdMenuItems = collect($menuItems)->map(function ($menuItem) use ($category) {
+            return MenuItem::factory()->create(array_merge([
+                'category_id' => $category->id,
+                'is_available' => true,
+            ], $menuItem));
+        });
+
+        return [
+            'category' => $category->fresh(),
+            'menuItems' => $createdMenuItems,
+        ];
     }
 
     protected function createOrderWithItems(array $orderOverrides = [], int $itemCount = 1): Order
