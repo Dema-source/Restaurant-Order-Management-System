@@ -3,18 +3,7 @@
 use App\Models\Category;
 use App\Models\MenuItem;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
-use Tests\Traits\InteractsWithDateRanges;
-use Tests\Traits\InteractsWithModels;
-use Tests\Traits\InteractsWithResponses;
-use Tests\Traits\InteractsWithRoles;
-
-uses(RefreshDatabase::class, InteractsWithRoles::class, InteractsWithResponses::class, InteractsWithDateRanges::class, InteractsWithModels::class);
-
-beforeEach(function () {
-    $adminRole = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'super_administrator']);
-});
 
 test('create category successfully', function () {
     $this->actingAsRole('super_administrator');

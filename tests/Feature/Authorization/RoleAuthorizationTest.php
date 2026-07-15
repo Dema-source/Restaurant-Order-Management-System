@@ -4,19 +4,6 @@ use App\Models\Category;
 use App\Models\Customer;
 use App\Models\MenuItem;
 use App\Models\Order;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Traits\InteractsWithModels;
-use Tests\Traits\InteractsWithResponses;
-use Tests\Traits\InteractsWithRoles;
-
-uses(RefreshDatabase::class, InteractsWithRoles::class, InteractsWithResponses::class, InteractsWithModels::class);
-
-beforeEach(function () {
-    // Create roles
-    $superAdminRole = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'super_administrator']);
-    $cashierRole = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Cashier']);
-    $kitchenRole = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'Kitchen_staff']);
-});
 
 // User
 test('admin can manage users', function () {

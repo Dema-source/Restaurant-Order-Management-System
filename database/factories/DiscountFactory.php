@@ -34,18 +34,19 @@ class DiscountFactory extends Factory
             : fake()->numberBetween(5, 100); // Fixed: 5-100 currency units
 
         return [
-            'name' => fake()->randomElement([
-                'Summer Sale',
-                'Winter Discount',
-                'Weekend Special',
-                'Happy Hour',
-                'Lunch Special',
-                'Dinner Deal',
-                'Early Bird',
-                'Loyalty Reward',
-                'New Customer Bonus',
-                'Holiday Offer',
-            ]),
+            'name' => fake()->unique()->words(2, true),
+            // 'name' => fake()->randomElement([
+            //     'Summer Sale',
+            //     'Winter Discount',
+            //     'Weekend Special',
+            //     'Happy Hour',
+            //     'Lunch Special',
+            //     'Dinner Deal',
+            //     'Early Bird',
+            //     'Loyalty Reward',
+            //     'New Customer Bonus',
+            //     'Holiday Offer',
+            // ]),
             'discount_type' => $type,
             'discount_value' => $value,
             'minimum_order_amount' => fake()->optional(0.5)->numberBetween(20, 200),

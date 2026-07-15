@@ -2,12 +2,7 @@
 
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
-use Tests\Traits\InteractsWithResponses;
-
-
-uses(RefreshDatabase::class, InteractsWithResponses::class);
 
 // Login with valid credentails
 test('login success with valid credentials', function () {

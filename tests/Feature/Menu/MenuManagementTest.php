@@ -5,17 +5,7 @@ use App\Models\InventoryMovement;
 use App\Models\MenuItem;
 use App\Models\OrderItem;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
-use Tests\Traits\InteractsWithModels;
-use Tests\Traits\InteractsWithResponses;
-use Tests\Traits\InteractsWithRoles;
-
-uses(RefreshDatabase::class, InteractsWithRoles::class, InteractsWithModels::class, InteractsWithResponses::class);
-
-beforeEach(function () {
-    $adminRole = \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'super_administrator']);
-});
 
 test('display menu items', function () {
     $user = User::factory()->create();

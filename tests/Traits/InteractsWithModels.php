@@ -10,10 +10,8 @@ use App\Models\Order;
 
 trait InteractsWithModels
 {
-    protected function createCategoryWithMenuItem(
-        array $categoryOverrides = [],
-        array $menuItemOverrides = []
-    ): array {
+    protected function createCategoryWithMenuItem(array $categoryOverrides = [], array $menuItemOverrides = []): array
+    {
         $category = Category::factory()->create($categoryOverrides);
 
         $menuItem = MenuItem::factory()->create(array_merge([
@@ -44,10 +42,8 @@ trait InteractsWithModels
         ];
     }
 
-    protected function createCategoryWithCustomMenuItems(
-        array $categoryOverrides = [],
-        array $menuItems = []
-    ): array {
+    protected function createCategoryWithCustomMenuItems(array $categoryOverrides = [], array $menuItems = []): array
+    {
         $category = Category::factory()->create($categoryOverrides);
 
         $createdMenuItems = collect($menuItems)->map(function ($menuItem) use ($category) {
@@ -88,7 +84,18 @@ trait InteractsWithModels
     protected function createActiveDiscount(array $overrides = []): Discount
     {
         return Discount::factory()->create(array_merge([
+            'weekday' => null,
             'is_active' => true,
+            'start_date' => now()->subDay(),
+            'end_date' => now()->addDay(),
+        ], $overrides));
+    }
+
+    protected function createInactiveDiscount(array $overrides = []): Discount
+    {
+        return Discount::factory()->create(array_merge([
+            'weekday' => null,
+            'is_active' => false,
             'start_date' => now()->subDay(),
             'end_date' => now()->addDay(),
         ], $overrides));

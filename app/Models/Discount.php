@@ -27,8 +27,8 @@ class Discount extends Model
         return [
             'discount_value' => 'decimal:2',
             'minimum_order_amount' => 'decimal:2',
-            'start_date' => 'date',
-            'end_date' => 'date',
+            'start_date' => 'datetime',
+            'end_date' => 'datetime',
             'is_active' => 'boolean',
         ];
     }
